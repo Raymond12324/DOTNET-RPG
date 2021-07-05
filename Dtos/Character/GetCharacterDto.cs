@@ -3,8 +3,7 @@ using DOTNET_RPG.Models;
 namespace DOTNET_RPG.Dtos.Character
 {
     public class GetCharacterDto
-    {
-        
+    {  
         public int Id { get; set; }
 
         public string Name { get; set; } = "Frodo";
