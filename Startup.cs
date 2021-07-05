@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using DOTNET_RPG.Services.CharacterService;
+using AutoMapper;
 
 namespace DOTNET_RPG
 {
@@ -28,10 +30,10 @@ namespace DOTNET_RPG
         {
 
             services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "DOTNET_RPG", Version = "v1" });
-            });
+            services.AddAutoMapper(typeof(Startup));
+            services.AddScoped<ICharacterService,CharacterService>();
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,8 +42,6 @@ namespace DOTNET_RPG
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DOTNET_RPG v1"));
             }
 
             //app.UseHttpsRedirection();
