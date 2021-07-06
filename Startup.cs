@@ -13,6 +13,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using DOTNET_RPG.Services.CharacterService;
 using AutoMapper;
+using DOTNET_RPG.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace DOTNET_RPG
 {
@@ -28,7 +30,7 @@ namespace DOTNET_RPG
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddDbContext<DataContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
             services.AddAutoMapper(typeof(Startup));
             services.AddScoped<ICharacterService,CharacterService>();
