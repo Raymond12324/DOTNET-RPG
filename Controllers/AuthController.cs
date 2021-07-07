@@ -2,10 +2,12 @@ using System.Threading.Tasks;
 using DOTNET_RPG.Data;
 using DOTNET_RPG.Dtos.Character.User;
 using DOTNET_RPG.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DOTNET_RPG.Controllers
 {
+ 
     [ApiController]
     [Route("[controller]")]
     public class AuthController : ControllerBase
